@@ -2,7 +2,7 @@ const express = require("express");
 
 const AuthController = require("../controllers/auth");
 const { authenticate, validateBody } = require("../middlewares");
-const { authSchema, authEmailSchema } = require("../schemas/auth");
+const { authSchema } = require("../schemas/auth");
 const { subscriptionSchema } = require("../schemas/subscription");
 
 const router = express.Router();
@@ -15,18 +15,6 @@ router.post(
   validateBody(authSchema),
   AuthController.register
 );
-
-// signup
-
-router.get("/verify/:verificationToken", AuthController.verify);
-
-router.post(
-  "/verify",
-  validateBody(authEmailSchema),
-  AuthController.resendVerifyEmail
-);
-
-// signin
 
 router.post(
   "/login",
