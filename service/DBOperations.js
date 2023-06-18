@@ -13,7 +13,6 @@ const getContactById = async (id) => {
 const addContact = async (data) => {
   return Contact.create(data);
 };
-
 const removeContact = async (id) => {
   return Contact.findByIdAndRemove({ _id: id });
 };
